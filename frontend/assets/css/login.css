@@ -1,0 +1,69 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f1ffe7;
+  }
+  
+  .conteiner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #891d44;
+  }
+
+  .logo{
+    width: 100px; /* Ajusta el tamaño del logo según tus necesidades */
+    margin-bottom: 20px;
+  }
+  
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .login-form h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+    color: whitesmoke;
+  }
+  
+  .login-form label {
+    font-size: 16px;
+    font-weight: bold;
+    color: whitesmoke;
+    margin-bottom: 6px;
+  }
+  
+  .login-form input {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 12px;
+    font-size: 16px;
+  }
+  
+  .login-form button {
+    padding: 10px 16px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #cfa116;;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .login-form button:hover {
+    background-color: #6b1637;
+  }

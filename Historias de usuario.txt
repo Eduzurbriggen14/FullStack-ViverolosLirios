@@ -1,0 +1,15 @@
+1-Como cliente me gustari poder acceder fácilmente a las distintas secciones que posee el sitio web.(Crear header con barra de navegación).
+2-Como cliente quiero poder realizar busquedas puntuales dentro de la página. (agregar icono de busqueda en el header).
+3-Como cliente quiero poder acceder a las redes sociales del vivero.(crear footer con las redes sociales).
+4-Como cliente quiero poder tener acceso la ubicación del vivero. (agregar un mapa con la ubicación).  
+5-Como cliente quiero poder acceder a mi carro de compras. (agregar el icono de carrito de compras en el header).
+6-Como cliente quiero poder crear/acceder a una cuenta para realizar mis compras. (agregar icono de login en el header).
+7-Como cliente quiero poder tener una linea de contacto donde hacer consultas.(agregar formulario de consultas).
+8-Como cliente quiero poder ver claramente los productos y servicios que brinda el vivero. (crear una grilla de productos y servicios)
+9-Como cliente quiero poder acceder al sitio desde mi celular y desde la pc.(El sitio debe ser responsive)
+10-Como cliente quiero poder abonar los productos atraves de la pagina web mediante algun metodo seguro. (pasarella de pagos)
+11-Como cliente quiero poder ver los productos por categoria.
+
+
+
+

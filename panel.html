@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VIVERO-CRUD</title>
+    <link rel="stylesheet" href="./frontend/assets/css/panel.css" />
+    <link
+      rel="shortcut icon"
+      href="./frontend/assets/images/icono.png"
+      type="image/x-icon"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body class="container-fuid p-4 bg-{#f1ffe7}">
+    <div class="d-flex justify-content-center align-items-center mt-3 mb-5">
+
+      <h1 class="">Panel Administrador</h1>
+    </div>
+    <button id="btnMostrarFormulario" class="btn btn-primary text-nowrap btn-lg mb-3">
+      Agregar nuevo producto
+    </button>
+
+    <div id="ventanaFormulario">
+      <!-- cremos la ventana emergente que contendra el formulario para crear un nuevo producto -->
+      <div id="formulario" style="display: none">
+        <h2>Complete los campos para agregar un nuevo producto</h2>
+        <!-- <input type="text" id="codigo" placeholder="Código"> -->
+        <form class="w-100 py-4">
+          <label for="nombre" class="form-label text-white">Nombre</label>
+          <input
+            type="text"
+            id="nombre"
+            placeholder="Nombre"
+            class="form-control mb-3"
+          />
+          <label for="descripcion" class="form-label text-white"
+            >Descripción</label
+          >
+          <input
+            type="text"
+            id="descripcion"
+            placeholder="Descripción"
+            class="form-control mb-3"
+          />
+          <label for="precio" class="form-label text-white">Precio</label>
+          <div class="input-group mb-3">
+            <span class="input-group-text">$</span>
+            <input
+              type="text"
+              id="precio"
+              placeholder="Precio"
+              class="form-control"
+            />
+          </div>
+          <label for="stock" class="form-label text-white">Stock</label>
+          <input
+            type="number"
+            id="stock"
+            placeholder="Stock"
+            class="form-control mb-3"
+          />
+          <label for="categoria" class="form-label text-white">Categoria</label>
+          <select id="categoria" class="form-select mb-3">
+            <!-- usamos select para evitar errores al escribir las diferentes categorias -->
+            <option value="" selected>Seleccione una categoría</option>
+            <option value="lirios">lirios</option>
+            <option value="herramientas">herramientas</option>
+            <option value="frutales">frutales</option>
+          </select>
+          <label for="imagen" class="form-label text-white">Imagen</label>
+          <input
+            type="text"
+            id="imagen"
+            placeholder="URL de la imagen"
+            class="form-control mb-3"
+          />
+          <div class="py-4 d-flex justify-content-evenly gap-4">
+            <button
+              type="button"
+              id="btnAgregarFormulario"
+              class="btn btn-primary flex-grow-1"
+            >
+              Agregar
+            </button>
+            <button
+              type="button"
+              id="btnCancelarFormulario"
+              class="btn btn-outline-warning flex-grow-1"
+            >
+              Cancelar
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <table id="productosTable" class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Código</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Descripción</th>
+          <th scope="col">Precio</th>
+          <th scope="col">Stock</th>
+          <th scope="col">Categoría</th>
+          <th scope="col">Imagen</th>
+          <th scope="col">Acciones</th>
+        </tr>
+      </thead>
+      <tbody id="productosBody"></tbody>
+    </table>
+
+    <!-- ventana emergente que aparece al presionar sobre el boton editar -->
+    <div id="ventanaEmergente" class="ventana-emergente">
+      <div id="formularioEditar" style="display: none" class="w-50">
+        <h2>Editar Producto</h2>
+        <form class="w-100 py-4">
+          <label for="codigoEditar" class="form-label">Código:</label>
+          <!-- no es necesario colocar un valor ya que este atributo es autoincremental-->
+          <input
+            type="text"
+            id="codigoEditar"
+            class="form-control mb-3"
+            disabled
+          />
+          <br />
+          <label for="nombreEditar" class="form-label">Nombre:</label>
+          <input type="text" id="nombreEditar" class="form-control mb-3" />
+          <br />
+          <label for="descripcionEditar" class="form-label">Descripción:</label>
+          <input type="text" id="descripcionEditar" class="form-control mb-3" />
+          <br />
+          <label for="precioEditar" class="form-label">Precio:</label>
+          <input type="text" id="precioEditar" class="form-control mb-3" />
+          <br />
+          <label for="stockEditar" class="form-label">Stock:</label>
+          <input type="text" id="stockEditar" class="form-control mb-3" />
+          <br />
+          <label for="categoriaEditar" class="form-label">Categoría:</label>
+          <input type="text" id="categoriaEditar" class="form-control mb-3" />
+          <br />
+          <label for="imagenEditar" class="form-label">Imagen:</label>
+          <input type="text" id="imagenEditar" class="form-control mb-3" />
+          <br />
+          <div class="py-4 d-flex justify-content-evenly gap-4">
+            <button type="button" id="btnActualizar" class="btn btn-success">
+              Actualizar
+            </button>
+            <button type="button" id="btnCancelar" class="btn btn-secondary">
+              Cancelar
+            </button>
+            <button type="button" id="btnCerrar" class="btn btn-outline-dark">
+              Cerrar
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="./frontend/assets/js/fetchData.js"></script>
+    <!--vinculamos nuestro archivo js al html -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+  </body>
+</html>
