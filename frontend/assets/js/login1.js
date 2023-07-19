@@ -23,6 +23,7 @@ document.getElementById("login-form").addEventListener("submit", function (event
       console.log("Datos recibidos:", data);
       if ("access_token" in data) {
         localStorage.setItem("access_token", data.access_token);
+        localStorage.setItem("es_administrador", data.es_administrador);
         window.location.href = "./index.html";
       } else {
         alert("Credenciales inválidas");
