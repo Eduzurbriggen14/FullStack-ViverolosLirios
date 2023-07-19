@@ -199,18 +199,25 @@ document.addEventListener("DOMContentLoaded", function() {
   console.log("DOM completamente cargado");
 
   var token = localStorage.getItem('access_token');
-  console.log(token); 
+  console.log(token);
 
-  var es_administrador= localStorage.getItem('es_administrador')== "true";
+  var es_administrador = localStorage.getItem('es_administrador') === "true";
   console.log(es_administrador);
 
-    // Verificamos si el elemento con ID "panelButtonContainer" existe antes de cambiar el estilo.
-  const panelButtonContainer = document.getElementById("panelButtonContainer");
+  const panelButton = document.getElementById("panelButton");
+  const panelButtonContainerMobile = document.getElementById("panelButtonContainerMobile");
 
-    // Verificamos si el objeto "data" existe y si el usuario es administrador para mostrar u ocultar el botón.
-  if (panelButtonContainer && es_administrador) {
-    panelButtonContainer.style.display = "block";
-  } else if (panelButtonContainer) {
-    panelButtonContainer.style.display = "none"; // Ocultar el botón si el usuario no es administrador
+  // Verificamos si el objeto "data" existe y si el usuario es administrador para mostrar u ocultar el botón.
+  if (panelButton && es_administrador) {
+    panelButton.style.display = "block";
+  } else if (panelButton) {
+    panelButton.style.display = "none";
   }
-  });
+
+  // Para el menú en dispositivos móviles (responsive)
+  if (panelButtonContainerMobile && es_administrador) {
+    panelButtonContainerMobile.style.display = "block";
+  } else if (panelButtonContainerMobile) {
+    panelButtonContainerMobile.style.display = "none";
+  }
+});

@@ -95,7 +95,7 @@ a:visited:hover {
   gap: 1.5rem;
 }
 
-.menu_li button{
+#panelButton{
   display: none;
 }
 /* .navegacion ul:nth-child(2){
