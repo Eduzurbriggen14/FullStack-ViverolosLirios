@@ -169,12 +169,13 @@ def login():
 
     if username is not None and password is not None:
         user = Usuario.query.filter_by(usuario=username, password=password, activo=True).first()
+        print(user)
 
         if user:
             additional_claims = {"es_administrador": user.es_administrador}
             access_token = create_access_token(identity=user.usuario, additional_claims=additional_claims)
             print(access_token)
-            return jsonify(access_token=access_token, es_administrador=user.es_administrador), 200
+            return jsonify(access_token=access_token, es_administrador=user.es_administrador, username= username), 200
         else:
             return jsonify(mensaje="Credenciales inválidas, ingrese sus datos nuevamente."), 401
     else:
@@ -187,10 +188,6 @@ def get_info():
     # Obtener la identidad (username) y las reclamaciones (claims) del token de acceso
     current_user = get_jwt_identity()
     claims = get_jwt()
-
-    # Aquí puedes realizar cualquier lógica adicional para obtener más información sobre el usuario
-    # Por ejemplo, consulta la base de datos o realiza operaciones adicionales en función del rol
-
     return jsonify({"usuario": current_user, "es_administrador": claims["es_administrador"]}), 200
 
 

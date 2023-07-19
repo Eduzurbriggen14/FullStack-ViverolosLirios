@@ -144,10 +144,10 @@ const productGrid= document.getElementById('grid-productos')
 
 function obtenerProductos() {
   // Url para usar la api del servidor remoto
-   fetch("https://luisescobar.pythonanywhere.com/productos")
+  //fetch("https://luisescobar.pythonanywhere.com/productos")
   // fetch("http://eduz14.pythonanywhere.com/productos")
   // Url para usar la api local
-  //fetch("http://127.0.0.1:5000/productos")
+  fetch("http://127.0.0.1:5000/productos")
     .then((response) => response.json())
     .then((data) => {
       mostrarProductos(data);
@@ -195,69 +195,22 @@ function mostrarProductos(productos) {
 obtenerProductos()
 
 
-// var token = localStorage.getItem('access_token');
-
-// fetch('http://127.0.0.1:5000/get_info', {
-//   method: "POST",
-//   headers: {
-//     "content-type": "application/json",
-//     Authorization: "Bearer " + token,
-//   },
-//   //body: JSON.stringify({ token: token })
-// })
-//   .then((res) => {
-//     if (!res.ok) {
-//       throw new Error('Network response was not ok');
-//     }
-//     return res.json();
-//   })
-//   .then((data) => {
-//     // Aquí tienes los datos ya convertidos a JSON
-    
-//      if ("es_administrador" in data && data.es_administrador) {
-      
-//        document.getElementById("panelButtonContainer").style.display = "block";
-//      } else {
-//        // Hacer algo si el usuario no es administrador
-//      }
-//    })
-//   .catch((error) => {
-//     console.error("error", error);
-//   });
-
 document.addEventListener("DOMContentLoaded", function() {
   console.log("DOM completamente cargado");
+
   var token = localStorage.getItem('access_token');
+  console.log(token); 
 
-  fetch('http://127.0.0.1:5000/get_info', {
-    method: "POST",
-    headers: {
-      "content-type": "application/json",
-      Authorization: "Bearer " + token,
-    },
-  })
-    .then((res) => {
-      if (!res.ok) {
-        throw new Error('Network response was not ok');
-      }
-      return res.json();
-    })
-    .then((data) => {
-      console.log("Datos del usuario:", data);
-      // Aquí tienes los datos ya convertidos a JSON
+  var es_administrador= localStorage.getItem('es_administrador')== "true";
+  console.log(es_administrador);
 
-      // Verificamos si el elemento con ID "panelButtonConteiner" existe antes de cambiar el estilo.
-      const panelButtonContainer = document.getElementById("panelButtonConteiner");
+    // Verificamos si el elemento con ID "panelButtonContainer" existe antes de cambiar el estilo.
+  const panelButtonContainer = document.getElementById("panelButtonContainer");
 
-      // Verificamos si el objeto "data" existe (esto asume que "data" es el objeto recibido de la petición al backend).
-      
-      if (data && "es_administrador" in data && data.es_administrador) {
-        panelButtonContainer.style.display = "block";
-      } else {
-        panelButtonContainer.style.display = "none"; // Ocultar el botón si el usuario no es administrador
-      }
-    })
-    .catch((error) => {
-      console.error("error", error);
-    });
-});
+    // Verificamos si el objeto "data" existe y si el usuario es administrador para mostrar u ocultar el botón.
+  if (panelButtonContainer && es_administrador) {
+    panelButtonContainer.style.display = "block";
+  } else if (panelButtonContainer) {
+    panelButtonContainer.style.display = "none"; // Ocultar el botón si el usuario no es administrador
+  }
+  });
